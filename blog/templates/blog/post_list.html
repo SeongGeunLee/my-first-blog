@@ -17,5 +17,14 @@
             <h2><a href="">목표</a></h2>
             <p>이거 만들다 보면 감 올텐데 이런 방식으로 AWS에 환경 설정하고, Git push -> git pull 반복하면 될듯!</p>
         </div>
+        <div>
+            {% for post in posts %}
+              <div>
+                  <p>published: {{ post.published}}</p>
+                  <h1><a href="">{{ post.title }}</a></h1>
+                  <p>{{ post.text|linebreaksbr }}</p>
+              </div>
+            {% endfor %}
+        </div>
     </body>
 </html>
