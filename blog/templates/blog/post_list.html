@@ -1,30 +1,13 @@
-<html>
-    <head>
-        <title>미리매 Project 구성원</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">구성원</a></h1>
-        </div>
+{% extends 'blog/base.html' %}
 
-        <div>
-            <p>이성근, 이난영, 최정은, 권세희, 강지윤</p>
-            <h2><a href="">우리가 공부해야 할 것들</a></h2>
-            <p>Python, Django(framework), Flask, Git, Aws, Dialogflow</p>
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
         </div>
-
-        <div>
-            <h2><a href="">목표</a></h2>
-            <p>이거 만들다 보면 감 올텐데 이런 방식으로 AWS에 환경 설정하고, Git push -> git pull 반복하면 될듯!</p>
-        </div>
-        <div>
-            {% for post in posts %}
-              <div>
-                  <p>published: {{ post.published}}</p>
-                  <h1><a href="">{{ post.title }}</a></h1>
-                  <p>{{ post.text|linebreaksbr }}</p>
-              </div>
-            {% endfor %}
-        </div>
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
